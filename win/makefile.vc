@@ -68,4 +68,4 @@ $(TMP_DIR)\myExtensionUuid.h: $(TMP_DIR)\manifest.uuid
 
 # Explicit dependency rules
 $(GENERICDIR)\myExtension.c : $(GENERICDIR)\myExtension.h
-$(GENERICDIR)\myExtensionInfo.c : $(GENERICDIR)\myExtension.h $(TMP_DIR)\myExtensionUuid.h
+$(GENERICDIR)\myExtensionBuildInfo.c : $(GENERICDIR)\myExtension.h $(TMP_DIR)\myExtensionUuid.h

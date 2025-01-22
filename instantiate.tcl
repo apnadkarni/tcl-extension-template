@@ -39,6 +39,17 @@ proc cleanup_backups {} {
     }
 }
 
+proc restore_backups {} {
+    foreach path $::paths {
+        if {[file exists $path.backup]} {
+            file rename $path.backup
+        }
+        if {[catch {file rename $path.backup $path} result]} {
+            puts stderr "Failed to restore [file rootname $path]"
+        }
+    }
+}
+
 if {[catch {
     foreach path $paths {
         if {![file exists $path]} continue
@@ -55,18 +66,14 @@ if {[catch {
 } result]} {
     puts stderr "Error instantiating extension template: $result"
     puts stderr "Restoring template files"
-    foreach path [glob -nocomplain -directory $root *.backup] {
-        if {[catch {file rename $path [file rootname $path]} result]} {
-            puts stderr "Failed to restore [file rootname $path]"
-        }
-    }
+    restore_backups
     exit 1
 }
 
 foreach path [lmap f {
         generic/myExtension.c
         generic/myExtension.h
-        generic/myExtensionInfo.c
+        generic/myExtensionBuildInfo.c
     } {
         file join $root $f
     }] {

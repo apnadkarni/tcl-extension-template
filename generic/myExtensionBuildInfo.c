@@ -170,7 +170,7 @@ BuildInfoObjCmd(
 	}
 	break;
     default:		/* Boolean test for other identifiers' presence */
-	arg = TclGetStringFromObj(objv[1], &len);
+	arg = Tcl_GetStringFromObj(objv[1], &len);
 	for (p = strchr(buildData, '.'); p++; p = strchr(p, '.')) {
 	    if (!strncmp(p, arg, len)
 		    && ((p[len] == '.') || (p[len] == '-') || (p[len] == '\0'))) {
