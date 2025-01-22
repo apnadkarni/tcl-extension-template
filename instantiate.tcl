@@ -89,5 +89,7 @@ foreach path [lmap f {
     }
 }
 
+writeFile [file join $root README.md] "# README for $packageName\n"
+
 cleanup_backups
 exit 0
