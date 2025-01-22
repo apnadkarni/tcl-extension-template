@@ -27,7 +27,7 @@ PROJECT = myextension
 # defined by rules for object files.
 PRJ_OBJS = \
 	$(TMP_DIR)\myExtension.obj \
-	$(TMP_DIR)\myExtensionInfo.obj
+	$(TMP_DIR)\myExtensionBuildInfo.obj
 
 PRJ_INCLUDES = -I$(TMP_DIR)
 

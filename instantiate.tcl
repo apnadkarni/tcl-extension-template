@@ -1,3 +1,5 @@
+#!/usr/bin/env/tclsh
+
 # Instantiates the Tcl extension template by prompting user.
 
 proc prompt {prompt} {
@@ -7,7 +9,7 @@ proc prompt {prompt} {
 prompt "Enter package name: "
 set packageName [gets stdin]
 prompt "Enter copyright owner name: "
-set owner [gets stdin]
+set ownerName [gets stdin]
 
 if {![string is alnum -strict $packageName]} {
     puts stderr "Package name must be alphanumeric"
@@ -15,19 +17,30 @@ if {![string is alnum -strict $packageName]} {
 }
 
 set root [file dirname [info script]]
+set paths [lmap f {
+    configure.ac
+    Makefile.in
+    pkgIndex.tcl.in
+    license.terms
+    generic/myExtension.c
+    generic/myExtension.h
+    generic/myExtensionBuildInfo.c
+    tests/build-info.test
+    win/makefile.vc
+} {
+    file join $root $f
+}]
+
+proc cleanup_backups {} {
+    foreach path $::paths {
+        if {[file exists $path.backup]} {
+            file delete $path.backup
+        }
+    }
+}
+
 if {[catch {
-    foreach path [lmap f {
-        configure.ac
-        Makefile.in
-        pkgIndex.tcl.in
-        license.terms
-        generic/myExtension.c
-        generic/myExtension.h
-        generic/myExtensionInfo.c
-        win/makefile.vc
-    } {
-        file join $root $f
-    }] {
+    foreach path $paths {
         if {![file exists $path]} continue
         file copy -force $path $path.backup
         writeFile $path \
@@ -36,6 +49,7 @@ if {[catch {
                              myExtension $packageName \
                              myextension $packageName \
                              MYEXTENSION [string toupper $packageName] \
+                             myName $ownerName \
                             ] [readFile $path]]
     }
 } result]} {
@@ -67,3 +81,6 @@ foreach path [lmap f {
         puts stderr "Could not rename $path to $newPath."
     }
 }
+
+cleanup_backups
+exit 0
