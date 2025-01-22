@@ -91,5 +91,12 @@ foreach path [lmap f {
 
 writeFile [file join $root README.md] "# README for $packageName\n"
 
+puts "Remember this is only a template. At the very least ..."
+puts ""
+puts "If using autoconf, modify configure.ac, and Makefile.in (including targets)"
+puts "as appropriate and regenerate the configure script."
+puts ""
+
+puts "If using nmake, make analogous changes to win/makefile.vc as well."
 cleanup_backups
 exit 0
