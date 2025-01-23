@@ -19,7 +19,14 @@ To use:
 
 4. Run autoconf to generate the configure script.
 
-5. Build and test as per TEA instructions.
+5. Build and test as per TEA and / or nmake procedures.
+
+6. Add your sources, modify `configure.ac`, `Makefile.in` (remember to
+regenerate configure!), `makefile.vc` etc. and build the next great Tcl
+extension!
+
+NOTE: Also edit the .gitignore and .gitattributes files to ensure they meet
+your project needs.
 
 The template includes a `build-info` command analogous to the Tcl `build-info`
-command. This should work without modifications.
+command. This should work without modifications. Delete if not wanted.

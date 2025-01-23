@@ -61,6 +61,7 @@ if {[catch {
                              myextension $packageName \
                              MYEXTENSION [string toupper $packageName] \
                              myName $ownerName \
+                             "Ashok P. Nadkarni" $ownerName \
                             ] [readFile $path]]
     }
 } result]} {
@@ -89,6 +90,9 @@ foreach path [lmap f {
     }
 }
 
+file mkdir library
+
+file rename -force -- [file join $root README.md] [file join $root README-template.md]
 writeFile [file join $root README.md] "# README for $packageName\n"
 
 puts "Remember this is only a template. At the very least ..."
