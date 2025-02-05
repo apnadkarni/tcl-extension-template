@@ -20,7 +20,7 @@ To use:
 
 2. Extract files to an empty directory where you will develop the extension.
 
-3. Run `tclsh instantiate.tcl` and answer the prompts.
+3. Run `tclsh generate.tcl` and answer the prompts.
 
 4. Run autoconf to generate the configure script.
 
