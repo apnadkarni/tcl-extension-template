@@ -51,8 +51,8 @@ and [tcl-build-extension](https://github.com/apnadkarni/tcl-build-extension)
 actions.
 
 For many extensions, no modifications should be required to the workflows. The
-[tcl-csv](https://github.com/apnadkarni/tcl-csv/.github/workflows) repository,
+[tcl-csv workflows](https://github.com/apnadkarni/tcl-csv/.github/workflows),
 for example, uses them without any modification. Extensions that have special
 needs, such as building or installing additional thirdparty libraries, need to
 modify the workflows. For an example, see the
-[tcl-cffi](https://github.com/apnadkarni/tcl-cffi/.github/workflows).
+[tcl-cffi workflows](https://github.com/apnadkarni/tcl-cffi/.github/workflows).
