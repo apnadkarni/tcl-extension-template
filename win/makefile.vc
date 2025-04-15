@@ -54,7 +54,7 @@ $(TMP_DIR)\manifest.uuid:
 !ELSE
 !IF EXIST($(ROOT)\.git)
 	@echo puts -nonewline git- | "$(TCLSH)" >$(TMP_DIR)\manifest.uuid
-	@git rev-parse HEAD >>$(TMP_DIR)\manifest.uuid || echo unknown >>$(TMP_DIR)\manifest.uuid
+	@git rev-parse HEAD >>$(TMP_DIR)\manifest.uuid || echo git-unknown >$(TMP_DIR)\manifest.uuid
 !ELSE
 	@echo unknown >$(TMP_DIR)\manifest.uuid
 !ENDIF

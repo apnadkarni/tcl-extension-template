@@ -95,15 +95,25 @@ set overwriteAll ""
 set savedPaths [list ]
 set sourceRoot [fnormalize [file dirname [info script]]]
 set sourceFiles {
+    aclocal.m4
     configure.ac
+    license.terms
     Makefile.in
     pkgIndex.tcl.in
-    license.terms
     generic/myExtension.c
     generic/myExtension.h
     generic/myExtensionBuildInfo.c
+    tests/all.tcl
     tests/build-info.test
     win/makefile.vc
+    win/nmakehlp.c
+    win/rules-ext.vc
+    win/rules.vc
+    win/targets.vc
+    tclconfig/README.txt
+    tclconfig/install-sh
+    tclconfig/license.terms
+    tclconfig/tcl.m4
     .gitattributes
     .github/workflows/mac.yml
     .github/workflows/mingw.yml
