@@ -18,9 +18,9 @@ To use:
 
 1. Download a [release](https://github.com/apnadkarni/tcl-extension-template/releases)
 
-2. Extract files to an empty directory where you will develop the extension.
+2. Extract files to an empty directory.
 
-3. Run `tclsh generate.tcl` and answer the prompts.
+3. Run `tclsh generate.tcl` as below.
 
 4. Run autoconf to generate the configure script.
 
@@ -30,8 +30,17 @@ To use:
 regenerate configure!), `makefile.vc` etc. and build the next great Tcl
 extension!
 
+The `generate.tcl` syntax is
+```
+tclsh generate.tcl ?PACKAGENAME? ?COPYRIGHTHOLDER? ?TARGETDIR?
+```
+
+The tool will prompt for `PACKAGENAME` and `COPYRIGHTHOLDER` if unspecified.
+`TARGETDIR` will default to the current directory if unspecified. This
+must not be the directory where the template was extracted.
+
 NOTE: Also edit the .gitignore and .gitattributes files to ensure they meet
-your project needs.
+your project needs or delete if not using git.
 
 The template includes a `build-info` command analogous to the Tcl `build-info`
 command. This should work without modifications. Delete if not desired.
