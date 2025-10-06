@@ -22,6 +22,9 @@
 # define Tcl_NewSizeIntObj Tcl_NewIntObj
 # define TCL_SIZE_MAX      INT_MAX
 # define TCL_SIZE_MODIFIER ""
+# ifndef TCL_INDEX_NONE
+#  define TCL_INDEX_NONE ((Tcl_Size) -1)
+# endif
 #endif
 
 

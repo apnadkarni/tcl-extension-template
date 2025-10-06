@@ -8,10 +8,10 @@ tcltest::configure -testdir [file dirname [file normalize [info script]]]
 tcltest::configure -notfile "*#*"
 
 if {[info exists env(TEMP)]} {
-    tcltest::configure -tmpdir $::env(TEMP)/cffi-test/[clock seconds]
+    tcltest::configure -tmpdir $::env(TEMP)/myExtension-test/[clock seconds]
 } else {
     if {[file exists /tmp] && [file isdirectory /tmp]} {
-	tcltest::configure -tmpdir /tmp/cffi-test/[clock seconds]
+	tcltest::configure -tmpdir /tmp/myExtension-test/[clock seconds]
     } else {
 	error "Unable to figure out TEMP directory. Please set the TEMP env var"
     }
