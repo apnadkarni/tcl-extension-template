@@ -121,7 +121,7 @@ BuildInfoObjCmd(
     switch (idx) {
     case ID_PATCHLEVEL:
 	if ((p = strchr(buildData, '+')) != NULL) {
-	    memcpy(buf, buildData, p - buildData);
+	    memcpy(buf, buildData, (size_t)(p - buildData));
 	    buf[p - buildData] = '\0';
 	    Tcl_SetObjResult(interp, Tcl_NewStringObj(buf, TCL_INDEX_NONE));
 	}
@@ -133,7 +133,7 @@ BuildInfoObjCmd(
 	    p = (q < r) ? q : r;
 	}
 	if (p != NULL) {
-	    memcpy(buf, buildData, p - buildData);
+	    memcpy(buf, buildData, (size_t) (p - buildData));
 	    buf[p - buildData] = '\0';
 	    Tcl_SetObjResult(interp, Tcl_NewStringObj(buf, TCL_INDEX_NONE));
 	}
@@ -141,7 +141,7 @@ BuildInfoObjCmd(
     case ID_COMMIT:
 	if ((p = strchr(buildData, '+')) != NULL) {
 	    if ((q = strchr(p++, '.')) != NULL) {
-		memcpy(buf, p, q - p);
+		memcpy(buf, p, (size_t) (q - p));
 		buf[q - p] = '\0';
 		Tcl_SetObjResult(interp, Tcl_NewStringObj(buf, TCL_INDEX_NONE));
 	    } else {
@@ -159,7 +159,7 @@ BuildInfoObjCmd(
 		    || !strncmp(p, "icc-", 4)
 		    || !strncmp(p, "msvc-", 5)) {
 		if ((q = strchr(p, '.')) != NULL) {
-		    memcpy(buf, p, q - p);
+		    memcpy(buf, p, (size_t) (q - p));
 		    buf[q - p] = '\0';
 		    Tcl_SetObjResult(interp, Tcl_NewStringObj(buf, TCL_INDEX_NONE));
 		} else {
@@ -172,7 +172,7 @@ BuildInfoObjCmd(
     default:		/* Boolean test for other identifiers' presence */
 	arg = Tcl_GetStringFromObj(objv[1], &len);
 	for (p = strchr(buildData, '.'); p++; p = strchr(p, '.')) {
-	    if (!strncmp(p, arg, len)
+	    if (!strncmp(p, arg, (size_t) len)
 		    && ((p[len] == '.') || (p[len] == '-') || (p[len] == '\0'))) {
 		if (p[len] == '-') {
 		    p += len;
@@ -180,7 +180,7 @@ BuildInfoObjCmd(
 		    if (!q) {
 			q = p + strlen(p);
 		    }
-		    memcpy(buf, p, q - p);
+		    memcpy(buf, p, (size_t) (q - p));
 		    buf[q - p] = '\0';
 		    Tcl_SetObjResult(interp, Tcl_NewStringObj(buf, TCL_INDEX_NONE));
 		} else {

@@ -9,13 +9,14 @@ on:
         type: choice
         options:
           - '["core-9-0-0"]'
-          - '["core-9-0-1"]'
+          - '["core-9-0-2"]'
           - '["core-8-6-10"]'
-          - '["core-8-6-16"]'
+          - '["core-8-6-17"]'
           - '["main"]'
+          - '["core-9-0-branch"]'
           - '["core-8-6-branch"]'
           - '["core-8-6-10", "core-9-0-0"]'
-          - '["core-8-6-10", "core-8-6-16", "core-9-0-0", "core-9-0-1"]'
+          - '["core-8-6-10", "core-8-6-17", "core-9-0-0", "core-9-0-2"]'
         default: '["core-8-6-10", "core-9-0-0"]'
       runners:  # User input for selecting OS
         description: 'OS version'
@@ -25,8 +26,9 @@ on:
           - '["macos-latest"]'
           - '["macos-13"]'
           - '["macos-14"]'
-          - '["macos-13", "macos-14"]'
-        default: '["macos-12", "macos-13", "macos-14"]'
+          - '["macos-15"]'
+          - '["macos-13", "macos-14", "macos-15]'
+        default: '["macos-latest"]'
       run-tests: # Whether tests should be run
         description: 'Run tests as well'
         required: false
