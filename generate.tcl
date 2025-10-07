@@ -248,6 +248,15 @@ proc copy_tcl_files {} {
     file copy -force -- [file join $sourceDir README.md] [file join $options(targetDir) README-template.md]
     writeFile [file join $options(targetDir) README.md] "# README for $options(package)\n"
 
+    if {$options(privateheaders)} {
+        set path [file join $options(targetDir) configure.ac]
+        writeFile $path [uncomment_symbols [readFile $path] [list TEA_PRIVATE_TCL_HEADERS]]
+        set path [file join $options(targetDir) win makefile.vc]
+        writeFile $path [uncomment_symbols [readFile $path] [list NEED_TCL_SOURCE]]
+
+        set path [file join $options(targetDir) generic $options(package).h]
+        writeFile $path [regsub {/{1,1}?\*\s*#include\s+<tclInt.h>.*\*/} [readFile $path] "#include <tclInt.h>"]
+    }
 }
 
 proc make_tk_edits {} {
@@ -283,7 +292,12 @@ proc make_tk_edits {} {
     }
 
     set path [file join $options(targetDir) generic $options(package).h]
-    writeFile $path [regsub {/{1,1}?\*\s*#include\s+<tk.h>.*\*/} [readFile $path] "#include <tk.h>"]
+    set text [readFile $path]
+    set text [regsub {/{1,1}?\*\s*#include\s+<tk.h>.*\*/} $text "#include <tk.h>"]
+    if {$options(privateheaders)} {
+        set text [regsub {/{1,1}?\*\s*#include\s+<tkInt.h>.*\*/} $text "#include <tkInt.h>"]
+    }
+    writeFile $path $text
 
     set path [file join $options(targetDir) generic $options(package).c]
 

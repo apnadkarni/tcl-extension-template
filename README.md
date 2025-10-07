@@ -1,6 +1,6 @@
 # Tcl extension template
 
-This is a template that should serve as a starting point for new Tcl extensions.
+This is a template that should serve as a starting point for new Tcl/Tk extensions.
 It is *not* a tutorial and *not* an illustrative sample. It is meant to create
 the layout used for extensions built using the standard Tcl Extension Architecture
 ([TEA](https://wiki.tcl-lang.org/page/TEA)) and assumes familiarity with
@@ -8,9 +8,6 @@ the same.
 
 As a bonus, it also includes CI workflows for Github actions. These may be
 used independently as well - see below.
-
-The template does not include direct support for Tk extensions although of course
-you could modify the generated files appropriately.
 
 ## Creating a Tcl extension skeleton
 
@@ -30,14 +27,21 @@ To use:
 regenerate configure!), `makefile.vc` etc. and build the next great Tcl
 extension!
 
-The `generate.tcl` syntax is
+The `generate.tcl` syntax displayed with the `--help option`.
 ```
-tclsh generate.tcl ?PACKAGENAME? ?COPYRIGHTHOLDER? ?TARGETDIR?
+Usage: tclsh.exe generate.tcl [OPTION]...
+
+Mandatory arguments to long options are mandatory for short options too.
+  -c, --copyright=OWNER  Copyright owner. Will prompt if unspecified.
+  -p, --package=PACKAGE  Package name. Will prompt if unspecified.
+  -d, --directory=DIR    Output directory. Defaults to current directory.
+      --overwrite        Overwrite files without prompting. Default false.
+      --tk               Tk extension. Default false.
+      --private-headers  Need Tcl and Tk private headers. Default false.
+      --help             display this help and exit
 ```
 
-The tool will prompt for `PACKAGENAME` and `COPYRIGHTHOLDER` if unspecified.
-`TARGETDIR` will default to the current directory if unspecified. This
-must not be the directory where the template was extracted.
+The output directory must not be the directory where the template was extracted.
 
 NOTE: Also edit the .gitignore and .gitattributes files to ensure they meet
 your project needs or delete if not using git.

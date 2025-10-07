@@ -14,7 +14,9 @@
 #define _MYEXTENSION_H
 
 #include <tcl.h>
+/* #include <tclInt.h> */
 /* #include <tk.h> */
+/* #include <tkInt.h> */
 
 #if (TCL_MAJOR_VERSION < 8) || (TCL_MAJOR_VERSION == 8 && TCL_MINOR_VERSION < 7)
 # undef Tcl_Size
