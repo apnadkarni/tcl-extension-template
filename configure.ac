@@ -97,6 +97,7 @@ if test "${TEA_PLATFORM}" = "windows" ; then
     :
     #TEA_ADD_SOURCES([win/winFile.c])
     #TEA_ADD_INCLUDES([-I\"$(${CYGPATH} ${srcdir}/win)\"])
+    TEA_ADD_LIBS([gdi32.lib])
 else
     # Ensure no empty else clauses
     :

@@ -69,6 +69,11 @@ Myextension_Init(
     if (Tcl_InitStubs(interp, TCL_VERSION, 0) == NULL) {
 	return TCL_ERROR;
     }
+#ifdef TK_VERSION
+    if (Tk_InitStubs(interp, TK_VERSION, 0) == NULL) {
+	return TCL_ERROR;
+    }
+#endif
 
     /*
      * Do any required package initialization.

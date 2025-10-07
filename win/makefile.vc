@@ -18,6 +18,9 @@
 
 # The name of the package
 PROJECT = myextension
+#NEED_TCL_SOURCE = 1
+#NEED_TK = 1
+#NEED_TK_SOURCE = 1
 
 !include "rules-ext.vc"
 
@@ -30,6 +33,9 @@ PRJ_OBJS = \
 	$(TMP_DIR)\myExtensionBuildInfo.obj
 
 PRJ_INCLUDES = -I$(TMP_DIR)
+
+# Add any additional libraries
+#PRJ_LIBS = shell32.lib
 
 # Define any additional compiler flags that might be required for the project
 # PRJ_DEFINES = -D_CRT_SECURE_NO_DEPRECATE
