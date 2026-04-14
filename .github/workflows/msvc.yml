@@ -9,14 +9,14 @@ on:
         type: choice
         options:
           - '["core-9-0-0"]'
-          - '["core-9-0-2"]'
+          - '["core-9-0-3"]'
           - '["core-8-6-10"]'
           - '["core-8-6-17"]'
           - '["main"]'
           - '["core-9-0-branch"]'
           - '["core-8-6-branch"]'
           - '["core-8-6-10", "core-9-0-0"]'
-          - '["core-8-6-10", "core-8-6-17", "core-9-0-0", "core-9-0-2"]'
+          - '["core-8-6-10", "core-8-6-17", "core-9-0-0", "core-9-0-3"]'
         default: '["core-8-6-10", "core-9-0-0"]'
       runners:  # User input for selecting OS
         description: 'OS version'
@@ -60,7 +60,7 @@ jobs:
 
     - name: Setup Tcl
       id: tcl-setup-step
-      uses: apnadkarni/tcl-setup@v1
+      uses: apnadkarni/tcl-setup@v2
       with:
         tcl-tag: ${{ matrix.tcl-tag }}
         target-arch: ${{ matrix.target-arch }}
@@ -68,7 +68,7 @@ jobs:
 
     - name: Build extension
       id: tcl-build-step
-      uses: apnadkarni/tcl-build-extension@v1
+      uses: apnadkarni/tcl-build-extension@v2
       with:
         toolchain: 'vc'
         run-tests: ${{ inputs.run-tests }}
