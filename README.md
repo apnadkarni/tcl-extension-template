@@ -51,6 +51,8 @@ command. This should work without modifications. Delete if not desired.
 
 ## Github action workflows
 
+*Note: workflows do not support Tk as yet*
+
 This repository also holds Github action workflows for testing Tcl extensions.
 Even if not using the entire template, these workflows may be copied to
 the `.github/workflows` directory in your extension repository. The workflows
